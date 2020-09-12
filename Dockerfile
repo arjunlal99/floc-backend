@@ -21,6 +21,5 @@ RUN npm install
 
 EXPOSE 8001
 
-RUN nohup node index.js &
-
+CMD ["node", "index.js"]
 
