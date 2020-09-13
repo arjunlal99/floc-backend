@@ -1,18 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend-deployment
+  name: backend
   labels:
-    app: backend
+    app: ftloc
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
-      app: backend
+      app: ftloc
+      tier: backend
+      track: stable
   template:
     metadata:
       labels:
-        app: backend
+        app: ftloc
+        tier: backend
+        track: stable
     spec:
       containers:
       - name: backend-ftloc
