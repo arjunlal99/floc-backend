@@ -17,7 +17,7 @@ app.get('/api/articles', (req,res) => {
 })
 
 //listener
-var listener = app.listen(8001, () => {
+var listener = app.listen(process.env.PORT || 8001, () => {
     console.log('Backend-api listening at port ', listener.address().port )
 } )
 
