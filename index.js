@@ -5,19 +5,21 @@ var articles = require('./models/articles.js')
 
 
 app.get('/', (req,res) => {
-    res.send('Hello backend-api')
+    res.status(200).json({success: true, message: "Backend-API is live"})
 })
 
 app.get('/api/articles', (req,res) => {
     articles.getArticles().then((docs) => {
-        res.json({success: true, articles: docs})
+        res.status(200).json({success: true, articles: docs})
     }).catch((err) => {
-        res.json({success: false, message: err})
+        res.status(400).json({success: false, message: err})
     })
 })
 
+
 //listener
-var listener = app.listen(process.env.PORT || 8001, () => {
-    console.log('Backend-api listening at port ', listener.address().port )
+module.exports = app.listen(process.env.PORT || 8001, () => {
+    console.log('Backend-api listening at port ',process.env.PORT )
+
 } )
 
